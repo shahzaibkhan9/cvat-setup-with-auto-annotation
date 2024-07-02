@@ -8,7 +8,7 @@ from ultralytics import YOLO
 
 def init_context(context):
 	context.logger.info('Init context ----> 0%')
-	model = YOLO('custom_atm_model.pt')
+	model = YOLO('custom_model.pt')
 	context.user_data.model_handler = model
 	context.logger.info('Init context ----> 100%')
 

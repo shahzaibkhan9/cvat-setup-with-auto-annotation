@@ -1,8 +1,8 @@
 metadata:
-  name: custom_atm_model
+  name: custom_model
   namespace: cvat
   annotations:
-    name: custom_atm_model
+    name: custom_model
     type: detector
     framework: pytorch
     # change this accordingly to your model classes
@@ -19,13 +19,13 @@ metadata:
         {"id": 8, "name": "atm-card"}
       ]
 spec:
-  description: custom_atm_model
+  description: custom_model
   runtime: 'python:3.9'
   handler: main:handler
   eventTimeout: 30s
 
   build:
-    image: custom_atm_model
+    image: custom_model
     baseImage: ubuntu:22.04
 
     directives:
