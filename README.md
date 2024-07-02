@@ -63,7 +63,7 @@ This guide provides step-by-step instructions for installation, configuration, a
 
 ### Configure Volumes
 
-12. Go to the **Configurations** tab, scroll down to the **Volumes** section:
+12. Go to the **Configurations** tab, scroll down to the **Volumes** section, and click 'create a new volume':
     - Name: `custom-model`
     - Type: `Host path`
     - Mount Path: `/opt/nuclio/custom_model.pt`
