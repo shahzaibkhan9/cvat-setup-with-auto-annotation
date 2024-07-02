@@ -63,16 +63,16 @@ docker exec -it cvat_server bash -ic 'python3 ~/manage.py createsuperuser'
 
 1. Enter the CVAT project in Nuclio using Chrome.
 2. Click on the **NEW FUNCTION** button.
-3. IMPORT the YAML file and then CREATE.
+3. IMPORT the [YAML](https://github.com/shahzaibkhan9/cvat-setup-with-auto-annotation/blob/main/function.yaml) file and then CREATE.
 
-Copy all the code from `main.py` and change the model path in the line you want to deploy.
+Copy all the code from [main.py](https://github.com/shahzaibkhan9/cvat-setup-with-auto-annotation/blob/main/main.py) and change the model path in the line you want to deploy.
 
 ### Configure Volumes
 
 Go to the **Configurations** tab, scroll down to the **Volumes** section:
 - Name: `custom-model`
 - Type: `Host path`
-- Mount Path: `/opt/nuclio/custom_atm_model.pt`
-- Host Path: `<directory>/custom_atm_model.pt`
+- Mount Path: `/opt/nuclio/custom_model.pt`
+- Host Path: `<directory>/custom_model.pt`
 
 Click **Deploy** and wait. After deployment, refresh the CVAT tab in Chrome. You should see the **Models Tab** with the YOLO model inside.
