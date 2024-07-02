@@ -1,0 +1,62 @@
+metadata:
+  name: custom_atm_model
+  namespace: cvat
+  annotations:
+    name: custom_atm_model
+    type: detector
+    framework: pytorch
+    # change this accordingly to your model classes
+    spec: |
+      [
+        {"id": 0, "name": "trash"},
+        {"id": 1, "name": "weapon"},
+        {"id": 2, "name": "atm"},
+        {"id": 3, "name": "person"},
+        {"id": 4, "name": "helmet"},
+        {"id": 5, "name": "complaint-box"},
+        {"id": 6, "name": "telephone"},
+        {"id": 7, "name": "cash"},
+        {"id": 8, "name": "atm-card"}
+      ]
+spec:
+  description: custom_atm_model
+  runtime: 'python:3.9'
+  handler: main:handler
+  eventTimeout: 30s
+
+  build:
+    image: custom_atm_model
+    baseImage: ubuntu:22.04
+
+    directives:
+      preCopy:
+        - kind: ENV
+          value: DEBIAN_FRONTEND=noninteractive
+        - kind: RUN
+          value: apt-get update && apt-get -y install curl git python3 python3-pip
+        - kind: RUN
+          value: apt-get -y install libgl1-mesa-glx libglib2.0-dev
+        - kind: WORKDIR
+          value: /opt/nuclio
+          # make sure that for the next step (at least) the ultralytics package version is compatible to that of the the ultralytics package used to train the custom model
+        - kind: RUN
+          value: pip3 install ultralytics==8.2.45 opencv-python==4.7.0.72 numpy==1.24.3 dill==0.3.8
+        - kind: RUN
+          value: ln -s /usr/bin/pip3 /usr/local/bin/pip
+        - kind: RUN
+          value: ln -s /usr/bin/python3 /usr/local/bin/python
+
+  triggers:
+    myHttpTrigger:
+      maxWorkers: 1
+      kind: 'http'
+      workerAvailabilityTimeoutMilliseconds: 10000
+      attributes:
+        maxRequestBodySize: 33554432
+
+  platform:
+    attributes:
+      restartPolicy:
+        name: always
+        maximumRetryCount: 3
+      mountMode: volume
