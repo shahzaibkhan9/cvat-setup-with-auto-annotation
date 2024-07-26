@@ -9,13 +9,12 @@ metadata:
     spec: |
       [
         {"id": 0, "name": "trash"},
-        {"id": 1, "name": "atm"},
-        {"id": 2, "name": "person"},
-        {"id": 3, "name": "helmet"},
-        {"id": 4, "name": "complaint-box"},
-        {"id": 5, "name": "telephone"},
-        {"id": 6, "name": "cash"},
-        {"id": 7, "name": "atm-card"}
+        {"id": 1, "name": "person"},
+        {"id": 2, "name": "helmet"},
+        {"id": 3, "name": "complaint-box"},
+        {"id": 4, "name": "telephone"},
+        {"id": 5, "name": "cash"},
+        {"id": 6, "name": "atm-card"}
       ]
 spec:
   description: custom_model
