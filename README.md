@@ -31,7 +31,7 @@ This guide provides step-by-step instructions for installation, configuration, a
 
 4. Create a project in Nuclio:
    ```sh
-   nuctl create project cvat
+   nuctl create project cvat --platform local
    ```
 
 ## Bring Up CVAT with Auto Annotation Tool
